@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: ld-detector-firebase
+    env: python
+    plan: free
+    startCommand: "python app.py"
+    envVars:
+      - key: SECRET_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: FIREBASE_CREDENTIALS_JSON
+        sync: false

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Home • LD Detector{% endblock %}
+{% block content %}
+<p class='mb-6'>Choose a test to begin. These are screening tools — not diagnostic.</p>
+<div class='grid grid-cols-1 md:grid-cols-3 gap-4'>
+  <a href='{{ url_for("test_dyslexia") }}' class='p-6 bg-white dark:bg-gray-800 rounded shadow hover:shadow-lg transition'>🔤 Dyslexia Test</a>
+  <a href='{{ url_for("test_dyscalculia") }}' class='p-6 bg-white dark:bg-gray-800 rounded shadow hover:shadow-lg transition'>➗ Dyscalculia Test</a>
+  <a href='{{ url_for("test_memory") }}' class='p-6 bg-white dark:bg-gray-800 rounded shadow hover:shadow-lg transition'>🖼️ Memory Test (Images)</a>
+  <a href='{{ url_for("admin_dashboard") }}' class='p-6 bg-white dark:bg-gray-800 rounded shadow hover:shadow-lg transition md:col-span-3'>📊 Admin Dashboard</a>
+</div>
+{% endblock %}

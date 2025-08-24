@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Memory Test{% endblock %}
+{% block content %}
+<h1 class='text-2xl font-bold mb-4'>🖼️ Image Memory Test</h1>
+<form method='POST' class='bg-white dark:bg-gray-800 p-6 rounded shadow'>
+  <div class='grid gap-4'>
+    <input type='hidden' name='correct_labels' value='{{ correct_labels }}'>
+    <div id='preview'>
+      <p class='mb-2'>Memorize these images. They will disappear in <span id='count'>7</span> seconds.</p>
+      <div class='grid grid-cols-2 md:grid-cols-4 gap-4'>
+        {% for t in targets %}
+        <div class='relative group'>
+          <img src='{{ t.url }}' alt='{{ t.label }}' class='w-full h-40 object-cover rounded shadow transition transform group-hover:scale-105'>
+          <div class='absolute bottom-1 left-1 right-1 text-center text-xs bg-black/50 text-white rounded opacity-0 group-hover:opacity-100 transition'>{{ t.label }}</div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div id='recall' style='display:none;'>
+      <div class='mb-2 font-semibold'>Select the images you remember seeing:</div>
+      <div class='grid grid-cols-2 md:grid-cols-4 gap-4'>
+        {% for item in recall_grid %}
+        <label class='block cursor-pointer'>
+          <input type='checkbox' name='recall' value='{{ item.label }}' class='hidden peer'>
+          <div class='rounded overflow-hidden shadow border border-transparent peer-checked:border-blue-500'>
+            <img src='{{ item.url }}' alt='{{ item.label }}' class='w-full h-40 object-cover'>
+          </div>
+          <div class='mt-1 text-center text-sm'>{{ item.label }}</div>
+        </label>
+        {% endfor %}
+      </div>
+      <div class='pt-4'><button type='submit' class='px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700'>Submit</button></div>
+    </div>
+  </div>
+</form>
+<script>
+  let count = 7;
+  const counterEl = document.getElementById('count');
+  const interval = setInterval(()=>{
+    count -= 1; counterEl.textContent = count;
+    if(count<=0){
+      clearInterval(interval);
+      document.getElementById('preview').style.display='none';
+      document.getElementById('recall').style.display='block';
+    }
+  }, 1000);
+</script>
+{% endblock %}

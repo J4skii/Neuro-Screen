@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Dyslexia Test{% endblock %}
+{% block content %}
+<h1 class='text-2xl font-bold mb-4'>🔤 Dyslexia Test</h1>
+<form method='POST' class='space-y-4 bg-white dark:bg-gray-800 p-6 rounded shadow'>
+  <div><label class='block font-semibold'>Name</label><input name='name' required class='w-full mt-1 p-2 rounded bg-gray-50 dark:bg-gray-900 border'></div>
+  <div><label class='block font-semibold'>Email</label><input name='email' type='email' required class='w-full mt-1 p-2 rounded bg-gray-50 dark:bg-gray-900 border'></div>
+  <div><label class='font-semibold'>1. Choose the correct spelling:</label><br>
+    <label><input type='radio' name='q1' value='a'> Acomodate</label><br>
+    <label><input type='radio' name='q1' value='b'> Accommodate</label><br>
+    <label><input type='radio' name='q1' value='c'> Acomadate</label></div>
+  <div><label class='font-semibold'>2. Match the word: Confident</label><br>
+    <label><input type='radio' name='q2' value='a'> Timid</label><br>
+    <label><input type='radio' name='q2' value='b'> Sure of oneself</label><br>
+    <label><input type='radio' name='q2' value='c'> Sad</label></div>
+  <div><label class='font-semibold'>3. Choose the correct word:</label><br>
+    <label><input type='radio' name='q3' value='a'> Definitely</label><br>
+    <label><input type='radio' name='q3' value='b'> Definately</label><br>
+    <label><input type='radio' name='q3' value='c'> Definetly</label></div>
+  <div><label class='font-semibold'>4. Pick the synonym of “Happy”:</label><br>
+    <label><input type='radio' name='q4' value='a'> Joyful</label><br>
+    <label><input type='radio' name='q4' value='b'> Boring</label><br>
+    <label><input type='radio' name='q4' value='c'> Sad</label></div>
+  <div><label class='font-semibold'>5. What does “Reluctant” mean?</label><br>
+    <label><input type='radio' name='q5' value='a'> Excited</label><br>
+    <label><input type='radio' name='q5' value='b'> Unwilling</label><br>
+    <label><input type='radio' name='q5' value='c'> Brave</label></div>
+  <div class='pt-2'><button type='submit' class='px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700'>Submit</button></div>
+</form>
+{% endblock %}

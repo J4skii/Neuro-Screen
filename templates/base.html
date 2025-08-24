@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <title>{% block title %}LD Detector{% endblock %}</title>
+  <script src='https://cdn.tailwindcss.com'></script>
+  <script defer src='{{ url_for("static", filename="js/theme.js") }}'></script>
+</head>
+<body class='bg-white dark:bg-gray-900 text-gray-900 dark:text-white'>
+<header class='sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-gray-900/70 border-b border-gray-200 dark:border-gray-800'>
+  <div class='max-w-6xl mx-auto px-4 py-3 flex items-center justify-between'>
+    <div class='flex items-center gap-2'>
+      <button onclick='goBack()' class='px-3 py-1 rounded border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800'>← Back</button>
+      <a href='{{ url_for("index") }}' class='px-3 py-1 rounded border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800'>Home</a>
+    </div>
+    <div class='font-semibold'>Intelligent LD Detection</div>
+    <button id='themeToggle' class='px-3 py-1 rounded bg-gray-200 dark:bg-gray-700'>🌗 Toggle</button>
+  </div>
+</header>
+<main class='max-w-6xl mx-auto p-6'>
+  {% block content %}{% endblock %}
+</main>
+<footer class='max-w-6xl mx-auto px-6 pb-8 text-sm text-gray-500 dark:text-gray-400'>
+  © {{ year }} LD Detector — Screening only (not diagnostic)
+</footer>
+<script>function goBack(){if (history.length>1) history.back(); else location.href='{{ url_for("index") }}';}</script>
+</body>
+</html>

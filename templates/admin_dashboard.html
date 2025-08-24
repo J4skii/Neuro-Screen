@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<h1 class='text-2xl font-bold mb-4'>📊 Admin Dashboard</h1>
+<form method='GET' action='{{ url_for("admin_dashboard") }}' class='flex flex-wrap gap-3 mb-4'>
+  <input name='email' value='{{ email }}' placeholder='Filter by email' class='px-3 py-2 rounded border dark:bg-gray-800'>
+  <select name='test_type' class='px-3 py-2 rounded border dark:bg-gray-800'>
+    <option value=''>All Tests</option>
+    <option value='Dyslexia' {% if test_type=='Dyslexia' %}selected{% endif %}>Dyslexia</option>
+    <option value='Dyscalculia' {% if test_type=='Dyscalculia' %}selected{% endif %}>Dyscalculia</option>
+    <option value='Working Memory' {% if test_type=='Working Memory' %}selected{% endif %}>Working Memory</option>
+  </select>
+  <button class='px-4 py-2 bg-blue-600 text-white rounded'>Apply</button>
+  <a href='{{ url_for("admin_export", email=email, test_type=test_type) }}' class='px-4 py-2 bg-green-600 text-white rounded'>Export CSV</a>
+</form>
+<div class='overflow-x-auto'>
+  <table class='min-w-full table-auto border-collapse border border-gray-300 dark:border-gray-700'>
+    <thead class='bg-gray-100 dark:bg-gray-800'>
+      <tr>
+        <th class='border px-4 py-2'>Name</th>
+        <th class='border px-4 py-2'>Email</th>
+        <th class='border px-4 py-2'>Test Type</th>
+        <th class='border px-4 py-2'>Score</th>
+        <th class='border px-4 py-2'>Flag</th>
+        <th class='border px-4 py-2'>Message</th>
+        <th class='border px-4 py-2'>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for r in results %}
+      <tr class='hover:bg-gray-50 dark:hover:bg-gray-800'>
+        <td class='border px-4 py-2'>{{ r.name }}</td>
+        <td class='border px-4 py-2'>{{ r.email }}</td>
+        <td class='border px-4 py-2'>{{ r.test_type }}</td>
+        <td class='border px-4 py-2'>{{ r.score }}{% if r.total_questions %}/{{ r.total_questions }}{% endif %}</td>
+        <td class='border px-4 py-2'>{{ 'Yes' if r.flag else 'No' }}</td>
+        <td class='border px-4 py-2'>{{ r.message }}</td>
+        <td class='border px-4 py-2'>{{ r.timestamp }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

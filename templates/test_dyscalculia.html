@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Dyscalculia Test{% endblock %}
+{% block content %}
+<h1 class='text-2xl font-bold mb-4'>➗ Dyscalculia Test</h1>
+<form method='POST' class='space-y-4 bg-white dark:bg-gray-800 p-6 rounded shadow'>
+  <div><label class='block font-semibold'>Name</label><input name='name' required class='w-full mt-1 p-2 rounded bg-gray-50 dark:bg-gray-900 border'></div>
+  <div><label class='block font-semibold'>Email</label><input name='email' type='email' required class='w-full mt-1 p-2 rounded bg-gray-50 dark:bg-gray-900 border'></div>
+  <div><label class='font-semibold'>1. What comes next? 2, 4, 8, 16, __</label><br>
+    <label><input type='radio' name='q1' value='a'> 18</label><br>
+    <label><input type='radio' name='q1' value='b'> 24</label><br>
+    <label><input type='radio' name='q1' value='c'> 32</label></div>
+  <div><label class='font-semibold'>2. 7 + __ = 14</label><br>
+    <label><input type='radio' name='q2' value='a'> 8</label><br>
+    <label><input type='radio' name='q2' value='b'> 7</label><br>
+    <label><input type='radio' name='q2' value='c'> 6</label></div>
+  <div><label class='font-semibold'>3. Arrange in ascending order: 0.5, 0.05, 0.005</label><br>
+    <label><input type='radio' name='q3' value='a'> 0.005, 0.05, 0.5</label><br>
+    <label><input type='radio' name='q3' value='b'> 0.05, 0.005, 0.5</label><br>
+    <label><input type='radio' name='q3' value='c'> 0.5, 0.05, 0.005</label></div>
+  <div><label class='font-semibold'>4. What is 25% of 200?</label><br>
+    <label><input type='radio' name='q4' value='a'> 50</label><br>
+    <label><input type='radio' name='q4' value='b'> 40</label><br>
+    <label><input type='radio' name='q4' value='c'> 60</label></div>
+  <div><label class='font-semibold'>5. Which is greater: 3/4 or 4/5?</label><br>
+    <label><input type='radio' name='q5' value='a'> 3/4</label><br>
+    <label><input type='radio' name='q5' value='b'> 4/5</label><br>
+    <label><input type='radio' name='q5' value='c'> They are equal</label></div>
+  <div class='pt-2'><button type='submit' class='px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700'>Submit</button></div>
+</form>
+{% endblock %}
